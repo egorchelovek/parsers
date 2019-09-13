@@ -9,16 +9,16 @@
     </head>
     <body>
         <div class="page-header">
-            <h1><a href="/">Parsers app</a></h1>
+          {% if user.is_authenticated %}
+            <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+          {% else %}
+            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+          {% endif %}
+          <h1><a href="/">Parsers app</a></h1>
         </div>
         <div class="content container">
-          {% if user.is_authenticated %}
-            Hi, user {{user}}!
-            {% block content %}
-            {% endblock %}
-          {% else %}
-            Oops!
-          {% endif %}
+          {% block content %}
+          {% endblock %}
         </div>
     </body>
 </html>

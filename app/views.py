@@ -1,13 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 from app.models import Worker
 from app.forms import WorkerForm
 
 # Create your views here.
+@login_required
 def workers_list(request):
     workers = Worker.objects.all();
     return render(request, "app/workers_list.html", {'workers':workers})
 
+@login_required
 def worker_new(request):
     if request.method == "POST":
         form = WorkerForm(request.POST)
@@ -21,6 +24,7 @@ def worker_new(request):
         form = WorkerForm()
     return render(request, 'app/worker_edit.html',{'form':form})
 
+@login_required
 def worker_edit(request, pk):
     worker = get_object_or_404(Worker, pk=pk)
     if request.method == "POST":
@@ -35,6 +39,7 @@ def worker_edit(request, pk):
         form = WorkerForm(instance=worker)
     return render(request, 'app/worker_edit.html',{'form':form})
 
+@login_required
 def worker_delete(request, pk):
     worker = get_object_or_404(Worker, pk=pk)
     worker.delete()

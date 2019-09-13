@@ -1,12 +1,14 @@
 from django.db import models
 from django.conf import settings
 from django.core.validators import MinValueValidator
+from django.utils import timezone
 from multiselectfield import MultiSelectField
 
 # Create your models here.
 class Worker(models.Model):
 
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE )
+    created_date = models.DateTimeField(default=timezone.now)
 
     active = models.BooleanField(default=False)
 

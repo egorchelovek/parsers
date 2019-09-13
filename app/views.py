@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from app.models import Worker
 from app.forms import WorkerForm
+from app.task import notify
 
 # Create your views here.
 @login_required
@@ -43,4 +44,9 @@ def worker_edit(request, pk):
 def worker_delete(request, pk):
     worker = get_object_or_404(Worker, pk=pk)
     worker.delete()
+    return redirect("/")
+
+@login_required
+def worker_activate(request, pk):
+    notify("Hi!")
     return redirect("/")

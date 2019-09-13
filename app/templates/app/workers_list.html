@@ -5,7 +5,7 @@
 <table>
   {% for worker in workers %}
   <tr>
-    <td> <button type="button"> Activate </button> </td>
+    <td> <a class="btn btn-default" href="{% url 'worker_activate' pk=worker.pk %}">Activate</button> </td>
     <td> <button type="button"> Stop </button> </td>
     <td> {{worker.source}} </td>
     <td> {{worker.min_cost}} </td>

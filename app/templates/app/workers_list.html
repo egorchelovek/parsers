@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title> Parsers app </title>
+  </head>
+  <body>
+    <h1> Workers list </h1>
+    <table>
+    {% for worker in workers %}
+    <tr>
+      <td> <button type="button"> Activate </button> </td>
+      <td> <button type="button"> Stop </button> </td>
+      <td> {{worker.source}} </td>
+      <td> {{worker.min_cost}} </td>
+      <td> {{worker.max_cost}} </td>
+      <td> {{worker.email}} </td>
+      <td> {{worker.objects_amount}} </td>
+      <td> {{worker.starting_time}} </td>
+      <td> {{worker.updating_period}} </td>
+      <td> {{worker.objects_type}} </td>
+      <td> {{worker.name}} </td>
+      <td> <button type="button"> Edit </button> </td>
+    </tr>
+    {% endfor %}
+    </table>
+    <br>
+    <button type="button"> Create worker </button>
+  </body>
+</html>

@@ -8,6 +8,19 @@ def workers_list(request):
     workers = Worker.objects.all();
     return render(request, "app/workers_list.html", {'workers':workers})
 
+def worker_new(request):
+    if request.method == "POST":
+        form = WorkerForm(request.POST)
+        if form.is_valid():
+            worker = form.save(commit=False)
+            worker.creator = request.user
+            worker.created_date = timezone.now()
+            worker.save()
+            return redirect('/')
+    else:
+        form = WorkerForm()
+    return render(request, 'app/worker_edit.html',{'form':form})
+
 def worker_edit(request, pk):
     worker = get_object_or_404(Worker, pk=pk)
     if request.method == "POST":
@@ -22,15 +35,7 @@ def worker_edit(request, pk):
         form = WorkerForm(instance=worker)
     return render(request, 'app/worker_edit.html',{'form':form})
 
-def worker_new(request):
-    if request.method == "POST":
-        form = WorkerForm(request.POST)
-        if form.is_valid():
-            worker = form.save(commit=False)
-            worker.creator = request.user
-            worker.created_date = timezone.now()
-            worker.save()
-            return redirect('/')
-    else:
-        form = WorkerForm()
-    return render(request, 'app/worker_edit.html',{'form':form})
+def worker_delete(request, pk):
+    worker = get_object_or_404(Worker, pk=pk)
+    worker.delete()
+    return redirect("/")

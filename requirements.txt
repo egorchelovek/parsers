@@ -2,3 +2,7 @@ Django~=2.2.4
 django-multiselectfield~=0.1.8
 django-background-tasks~=1.1.13
 psycopg2
+selenium
+pytesseract
+Pillow
+xslxwritter

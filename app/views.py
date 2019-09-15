@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from app.models import Worker
 from app.forms import WorkerForm
-from app.task import notify
+from app.task import parse_and_report
 
 # Create your views here.
 @login_required
@@ -48,5 +48,12 @@ def worker_delete(request, pk):
 
 @login_required
 def worker_activate(request, pk):
-    notify("Hi!")
+    worker = get_object_or_404(Worker, pk=pk)
+    parse_and_report(
+    worker.email,
+    worker.source,
+    worker.objects_type,
+    worker.objects_amount,
+    worker.min_cost,
+    worker.max_cost)
     return redirect("/")

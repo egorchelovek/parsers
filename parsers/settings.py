@@ -136,3 +136,60 @@ EMAIL_USE_SSL = True
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'egor.zamotaev@mail.ru'
 EMAIL_HOST_PASSWORD = 'DSO003LaDla'
+
+EMAIL_SUBJECT = "Информация по аренде/продаже квартир"
+EMAIL_BODY = "Здравствуйте! Прилагаю к письму таблицу с запрошенной Вами информацией.\nС уважением,\nВаш Агент."
+
+TABLE_HEADER = {
+    'A1':'Адресс',
+    'B1':'Площадь',
+    'C1':'Стоимость',
+    'D1':'Этаж',
+    'E1':'Телефонный номер',
+    'F1':'Контактное лицо',
+    'G1':'Ссылка',
+}
+
+# Worker default info
+SOURCE_SITES = {
+    'http://www.avito.ru' : 'Avito',
+    'http://www.move.ru' : 'Move',
+    'http://www.arendator.ru' : 'Arendator',
+    'http://www.mirkvartir.ru' : 'Mirkvartir',
+    'http://www.sob.ru' : 'Sob',
+    'http://www.zdanie.info' :'Zdanie',
+    'http://www.moskva.gde.ru' :'MoskvaGde',
+    'http://www.propokupki.ru' : 'Propokupki',
+    'http://www.kvmeter.ru' : 'KvMeter',
+    'http://www.comrent.ru' : 'Comrent',
+}
+
+SOURCE_PAGES_SELL = {
+    'Avito' : '/barnaul/kvartiry/prodam?user=1'
+}
+
+SOURCE_PAGES_RENT = {
+    'Avito' : '/barnaul/kvartiry/sdam?user=1'
+}
+
+OBJECTS_AMOUNTS = {
+    10:10,
+    20:20,
+    30:30,
+    50:50,
+    100:100,
+}
+
+OBJECTS_TYPES = {
+    0:"Rent",
+    1:"Sell",
+}
+
+UPDATING_PERIODS = {
+    900 : '15 min',
+    3600 : '1 hour',
+    10800 : '3 hours',
+    86400 : '1 day',
+}
+
+MAX_SCROLLS = 5

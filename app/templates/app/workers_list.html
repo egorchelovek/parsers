@@ -5,17 +5,20 @@
 <table>
   {% for worker in workers %}
   <tr>
+    <td> {{worker.name}} </td
+    <td> {{worker.state_active}} </td>
     <td> <a class="btn btn-default" href="{% url 'worker_activate' pk=worker.pk %}">Activate</button> </td>
-    <td> <button type="button"> Stop </button> </td>
-    <td> {{worker.source}} </td>
-    <td> {{worker.min_cost}} </td>
-    <td> {{worker.max_cost}} </td>
-    <td> {{worker.email}} </td>
+    <td> <a class="btn btn-default" href="{% url 'worker_stop' pk=worker.pk %}">Stop</button> </td>
+    <td> {{worker.mailing_list}} </td>
+    <td> {{worker.source_sites}} </td>
     <td> {{worker.objects_amount}} </td>
+    <td> {{worker.objects_types}} </td>
+    <td> {{worker.min_price_rent}} </td>
+    <td> {{worker.max_price_rent}} </td>
+    <td> {{worker.min_price_sell}} </td>
+    <td> {{worker.max_price_sell}} </td>
     <td> {{worker.starting_time}} </td>
     <td> {{worker.updating_period}} </td>
-    <td> {{worker.objects_type}} </td>
-    <td> {{worker.name}} </td>
     <td> <a class="btn btn-default" href="{% url 'worker_edit' pk=worker.pk %}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
   </tr>
   {% endfor %}

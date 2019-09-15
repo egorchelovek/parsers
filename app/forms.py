@@ -6,12 +6,16 @@ class WorkerForm(forms.ModelForm):
     class Meta:
         model = Worker
         fields = (
-        'source',
-        'min_cost',
-        'max_cost',
-        'email',
+        'name',
+        'state_active',
+        'mailing_list',
+        'source_sites',
         'objects_amount',
+        'objects_types',
+        'min_price_rent',
+        'max_price_rent',
+        'min_price_sell',
+        'max_price_sell',
         'starting_time',
         'updating_period',
-        'name'
         )

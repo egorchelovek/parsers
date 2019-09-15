@@ -3,39 +3,55 @@ from django.conf import settings
 from django.core.validators import MinValueValidator
 from django.utils import timezone
 from multiselectfield import MultiSelectField
+from app.task import parse_and_report
 
-# Create your models here.
 class Worker(models.Model):
 
+    name = models.CharField(max_length=200)
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE )
     created_date = models.DateTimeField(default=timezone.now)
 
-    active = models.BooleanField(default=False)
+    state_active = models.BooleanField(default=False)
 
-    source = MultiSelectField(choices = settings.SOURCE_SITES)
+    mailing_list = models.CharField(max_length=200)
 
-    min_cost = models.FloatField(validators=[MinValueValidator(0.0)]) # little bit tricky
-    max_cost = models.FloatField(validators=[MinValueValidator(0.0)])
+    source_sites = MultiSelectField(choices = tuple(settings.SOURCE_SITES.items()))
 
-    email = models.CharField(max_length=200)
+    objects_amount = models.IntegerField(choices = tuple(settings.OBJECTS_AMOUNTS.items()))
 
-    objects_amount = models.IntegerField(choices = settings.OBJECTS_AMOUNTS)
+    objects_types = MultiSelectField(choices = tuple(settings.OBJECTS_TYPES.items()))
+
+    min_price_rent = models.FloatField(validators=[MinValueValidator(0.0)]) # little bit tricky
+    max_price_rent = models.FloatField(validators=[MinValueValidator(0.0)])
+
+    min_price_sell = models.FloatField(validators=[MinValueValidator(0.0)])
+    max_price_sell = models.FloatField(validators=[MinValueValidator(0.0)])
 
     starting_time = models.TimeField()
 
-    updating_period = models.IntegerField(choices=settings.UPDATING_PERIODS)
+    updating_period = models.IntegerField(choices=tuple(settings.UPDATING_PERIODS.items()))
 
-    objects_type = MultiSelectField(choices = settings.OBJECTS_TYPES)
+    def activate(self):
 
-    name = models.CharField(max_length=200)
-
-    def run(self):
-        self.active = True
+        self.state_active = True
         self.save()
+
+        parse_and_report(
+        self.mailing_list,
+        list(self.source_sites),
+        list(self.objects_types),
+        self.objects_amount,
+        self.min_price_rent,
+        self.max_price_rent,
+        self.min_price_sell,
+        self.max_price_sell)
 
     def stop(self):
-        self.active = False
+
+        self.state_active = False
         self.save()
+
+        # TODO stop task feature
 
     def __str__(self):
         return self.name

@@ -29,7 +29,6 @@ from xlsxwriter.worksheet import (
 import xlsxwriter
 from django.conf import settings
 # import settings
-
 def prepare_workbook(filename):
     workbook = xlsxwriter.Workbook(filename)
     worksheet = workbook.add_worksheet()

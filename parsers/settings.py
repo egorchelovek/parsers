@@ -164,12 +164,17 @@ SOURCE_SITES = {
     'http://www.comrent.ru' : 'Comrent',
 }
 
+SOURCE_PAGES_RENT = {
+    'Avito' : '/barnaul/kvartiry/sdam?user=1'
+}
+
 SOURCE_PAGES_SELL = {
     'Avito' : '/barnaul/kvartiry/prodam?user=1'
 }
 
-SOURCE_PAGES_RENT = {
-    'Avito' : '/barnaul/kvartiry/sdam?user=1'
+OBJECTS_TYPES = {
+    0:"Аренда",
+    1:"Продажа",
 }
 
 OBJECTS_AMOUNTS = {
@@ -180,16 +185,11 @@ OBJECTS_AMOUNTS = {
     100:100,
 }
 
-OBJECTS_TYPES = {
-    0:"Rent",
-    1:"Sell",
-}
-
 UPDATING_PERIODS = {
-    900 : '15 min',
-    3600 : '1 hour',
-    10800 : '3 hours',
-    86400 : '1 day',
+    900 : '15 минут',
+    3600 : '1 час',
+    10800 : '3 часа',
+    86400 : '1 сутки',
 }
 
 MAX_SCROLLS = 5

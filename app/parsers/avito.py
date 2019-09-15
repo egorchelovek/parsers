@@ -3,9 +3,10 @@ from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException
 from time import sleep
 import xlsxwriter
-from utils import *
+from app.parsers.utils import *
 import re
 from selenium.webdriver.chrome.options import Options
+from os import path
 
 def parse_avito(params):
     (TYPE, NUMBER_OF_ELEMENTS, MIN_COST, MAX_COST) = params
@@ -22,9 +23,9 @@ def parse_avito(params):
 
     # filter by COST
     min_cost_field = driver.find_element_by_xpath('//input[@data-marker="price/from"]')
-    min_cost_field.send_keys(MIN_COST)
+    min_cost_field.send_keys(str(MIN_COST))
     max_cost_field = driver.find_element_by_xpath('//input[@data-marker="price/to"]')
-    max_cost_field.send_keys(MAX_COST)
+    max_cost_field.send_keys(str(MAX_COST))
     button = driver.find_element_by_xpath('//button[@data-marker="search-filters/submit-button"]')
     button.click()
 
@@ -117,7 +118,7 @@ def parse_avito(params):
     driver.close()
     driver.quit()
 
-    return FILENAME
+    return path.realpath(FILENAME)
 
 # # test
 # import settings

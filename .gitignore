@@ -5,3 +5,6 @@ penv
 db.sqlite3
 /static
 .DS_Store
+*.xlsx
+phn.png
+tmp.txt

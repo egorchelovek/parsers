@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head>
-        <title>Parsers app </title>
+        <title>&pi;app</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -10,11 +10,12 @@
     <body>
         <div class="page-header">
           {% if user.is_authenticated %}
-            <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+            <!-- <p class="top-menu">Привет, {{ user.username }}! <small>(<a href="{% url 'logout' %}">Выйти</a>)</small></p> -->
+            <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
           {% else %}
             <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
           {% endif %}
-          <h1><a href="/">Parsers app</a></h1>
+          <h1><a href="/">&pi;app</a></h1> <h6><i>приложение парсинга информации о недвижимости</i></h6>
         </div>
         <div class="content container">
           {% block content %}

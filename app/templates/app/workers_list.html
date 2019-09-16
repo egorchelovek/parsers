@@ -1,29 +1,46 @@
 {% extends 'app/base.html' %}
 
 {% block content %}
-<h1> Workers list </h1>
-<table>
+<h1> Список сотрудников </h1>
+<table class="simple">
+  <tbody>
+    <tr>
+      <td> Имя </td>
+      <td> Статус </td>
+      <td> Управление </td>
+      <td> </td>
+      <td> Список рассылки </td>
+      <td> Источники </td>
+      <td> Число объектов</td>
+      <td> Тип операции </td>
+      <td> Цена аренды/покупки </td>
+      <td> Время начала работы </td>
+      <td> Период обновления </td>
+      <td> </td>
+    </tr>
   {% for worker in workers %}
   <tr>
-    <td> {{worker.name}} </td
-    <td> {{worker.state_active}} </td>
-    <td> <a class="btn btn-default" href="{% url 'worker_activate' pk=worker.pk %}">Activate</button> </td>
-    <td> <a class="btn btn-default" href="{% url 'worker_stop' pk=worker.pk %}">Stop</button> </td>
+    <td> {{worker.name}} </td>
+    {% if worker.state == True %}
+    <td> Активен </td>
+    {% else %}
+    <td> Остановлен </td>
+    {% endif %}
+    <td> <a class="btn btn-default" href="{% url 'worker_activate' pk=worker.pk %}">Активизировать</button> </td>
+    <td> <a class="btn btn-default" href="{% url 'worker_stop' pk=worker.pk %}">Остановить</button> </td>
     <td> {{worker.mailing_list}} </td>
     <td> {{worker.source_sites}} </td>
     <td> {{worker.objects_amount}} </td>
     <td> {{worker.objects_types}} </td>
-    <td> {{worker.min_price_rent}} </td>
-    <td> {{worker.max_price_rent}} </td>
-    <td> {{worker.min_price_sell}} </td>
-    <td> {{worker.max_price_sell}} </td>
+    <td> {{worker.min_price_rent}}-{{worker.max_price_rent}}&#x20bd;/<br>{{worker.min_price_sell}}-{{worker.max_price_sell}}&#x20bd; </td>
     <td> {{worker.starting_time}} </td>
-    <td> {{worker.updating_period}} </td>
+    <td> {{worker.updating_period}} сек </td>
     <td> <a class="btn btn-default" href="{% url 'worker_edit' pk=worker.pk %}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
   </tr>
   {% endfor %}
+  </tbody>
 </table>
 <br>
 <!-- <button type="button"> Create worker </button> -->
-Add worker <a href="{% url 'worker_edit' %}"> <span class="glyphicon glyphicon-plus"></span>
+Добавить сотрудника <a href="{% url 'worker_edit' %}"> <span class="glyphicon glyphicon-plus"></span>
 {% endblock %}

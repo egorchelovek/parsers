@@ -1,12 +1,12 @@
 {% extends 'app/base.html' %}
 
 {% block content %}
-  <h1> Worker edit </h1>
+  <h1> Правка </h1>
   <form method="POST" class="post-form">{% csrf_token %}
     {{form.as_p}}
-    <button type="submit" class="save btn btn-default">Save</button>
+    <button type="submit" class="save btn btn-default">Сохранить</button>
     {% if form.instance.pk != None %}
-    <a class="btn btn-default" href="{% url 'worker_delete' pk=form.instance.pk %}">Delete</button>
+    <a class="btn btn-default" href="{% url 'worker_delete' pk=form.instance.pk %}"> Удалить </button>
     {% endif %}
   </form>
 {% endblock %}

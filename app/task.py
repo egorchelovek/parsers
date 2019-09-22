@@ -6,6 +6,7 @@ from app.parsers.avito import parse_avito
 
 @background(schedule=60)
 def parse_and_report(mailing_list, source_sites, objects_types, objects_amount, \
+city, room_area_min, room_area_max, \
 min_price_rent, max_price_rent, min_price_sell, max_price_sell):
 
     for site in source_sites:
@@ -18,7 +19,9 @@ min_price_rent, max_price_rent, min_price_sell, max_price_sell):
                 max_price = max_price_rent
 
             # parse site
-            document_path = parse(site, (int(objects_type), int(objects_amount), int(min_price), int(max_price)))
+            document_path = parse(site, (int(objects_type), int(objects_amount), \
+            city, int(room_area_min), int(room_area_max),\
+            int(min_price), int(max_price)))
 
             # send mail
             if document_path != "":
@@ -27,6 +30,12 @@ min_price_rent, max_price_rent, min_price_sell, max_price_sell):
 def parse(site, params):
     if settings.SOURCE_SITES[site] == "Avito":
         return parse_avito(params)
+    elif settings.SOURCE_SITES[site] == "Youla":
+        return parse_youla(params)
+    elif settings.SOURCE_SITES[site] == "Move":
+        return parse_move(params)
+    else
+        pass
     return ""
 
 def send_mail(mailing_list, attach_file_path):

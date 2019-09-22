@@ -21,13 +21,18 @@ class Worker(models.Model):
 
     objects_types = MultiSelectField(choices = tuple(settings.OBJECTS_TYPES.items()))
 
+    city = models.CharField(max_length=200)
+
+    room_area_min = models.FloatField(validators=MinValueValidator(0.0)])
+    room_area_max = models.FloatField(validators=MinValueValidator(0.0)])
+
     min_price_rent = models.FloatField(validators=[MinValueValidator(0.0)]) # little bit tricky
     max_price_rent = models.FloatField(validators=[MinValueValidator(0.0)])
 
     min_price_sell = models.FloatField(validators=[MinValueValidator(0.0)])
     max_price_sell = models.FloatField(validators=[MinValueValidator(0.0)])
 
-    starting_time = models.TimeField()
+    report_time = models.TimeField()
 
     updating_period = models.IntegerField(choices=tuple(settings.UPDATING_PERIODS.items()))
 
@@ -41,6 +46,9 @@ class Worker(models.Model):
         list(self.source_sites),
         list(self.objects_types),
         self.objects_amount,
+        self.city,
+        self.room_area_min,
+        self.room_area_max,
         self.min_price_rent,
         self.max_price_rent,
         self.min_price_sell,

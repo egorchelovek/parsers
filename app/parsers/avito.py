@@ -9,7 +9,8 @@ from selenium.webdriver.chrome.options import Options
 from os import path
 
 def parse_avito(params):
-    (TYPE, NUMBER_OF_ELEMENTS, MIN_COST, MAX_COST) = params
+    (TYPE, NUMBER_OF_ELEMENTS, CITY, ROOM_AREA_MIN, ROOM_AREA_MAX,, MIN_PRICE, MAX_PRICE) = params
+    LOCATION = "/".join(settings.CITIES[CITY].lower())
     FILENAME = 'avito.xlsx'
 
     # setup browser
@@ -18,8 +19,8 @@ def parse_avito(params):
     # get page
     SITE = key_by_value(settings.SOURCE_SITES, 'Avito')
     PAGE = settings.SOURCE_PAGES_RENT['Avito'] if TYPE == 0 else settings.SOURCE_PAGES_SELL['Avito']
-    driver.get(SITE+PAGE)
-    print(SITE+PAGE)
+    driver.get(SITE+LOCATION+PAGE)
+    print(SITE+LOCATION+PAGE)
 
     # filter by COST
     min_cost_field = driver.find_element_by_xpath('//input[@data-marker="price/from"]')

@@ -27,7 +27,8 @@ from typing import Optional
 from xlsxwriter.worksheet import (
     Worksheet, cell_number_tuple, cell_string_tuple)
 import xlsxwriter
-from django.conf import settings
+# from django.conf import settings
+import settings
 # import settings
 def prepare_workbook(filename):
     workbook = xlsxwriter.Workbook(filename)
@@ -81,6 +82,7 @@ def set_column_autowidth(worksheet: Worksheet, column: int):
 
 # selenium driver utils
 from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
 
 def get_options():
     options = Options()
@@ -91,3 +93,8 @@ def get_options():
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     return options
+
+def facking_location(driver, city):
+    (lat, long) = settings.CITIES_GEOPOSTIONS[city]
+    driver.execute_script("window.navigator.geolocation.getCurrentPosition = function(success){ var position = {\"coords\" : {  \"latitude\": \""+str(lat)+"\",   \"longitude\": \""+str(long)+"\" }  };  success(position);}");
+    return driver

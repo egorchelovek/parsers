@@ -1,7 +1,7 @@
-# from django.conf import settings
-# from app.parsers.utils import *
-import settings
-from utils import *
+from django.conf import settings
+from app.parsers.utils import *
+# import settings
+# from utils import *
 from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException
 from time import sleep

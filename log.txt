@@ -1,0 +1,279 @@
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = True
+Job 1 done!
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped
+Run task...1
+Worker state = False
+Worker 1 stoped

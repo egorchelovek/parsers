@@ -1,15 +1,17 @@
 from django.conf import settings
+from app.parsers.utils import *
+# import settings
+# from utils import *
 from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException
 from time import sleep
 import xlsxwriter
-from app.parsers.utils import *
 import re
 from selenium.webdriver.chrome.options import Options
 from os import path
 
 def parse_avito(params):
-    (TYPE, NUMBER_OF_ELEMENTS, CITY, ROOM_AREA_MIN, ROOM_AREA_MAX,, MIN_PRICE, MAX_PRICE) = params
+    (TYPE, NUMBER_OF_ELEMENTS, CITY, ROOM_AREA_MIN, ROOM_AREA_MAX, MIN_PRICE, MAX_PRICE) = params
     LOCATION = "/".join(settings.CITIES[CITY].lower())
     FILENAME = 'avito.xlsx'
 

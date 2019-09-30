@@ -1,7 +1,7 @@
-# from django.conf import settings
-# from app.parsers.utils import *
-import settings
-from utils import *
+from django.conf import settings
+from app.parsers.utils import *
+# import settings
+# from utils import *
 from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException
 from time import sleep
@@ -108,13 +108,13 @@ def parse_move(params):
     return path.realpath(FILENAME)
 
 # test
-if __name__ == "__main__":
-    TYPE = 0
-    NUMBER_OF_ELEMENTS = 10
-    CITY = 'Moscow'
-    ROOM_AREA_MIN = 10
-    ROOM_AREA_MAX = 100
-    MIN_PRICE = 1000
-    MAX_PRICE = 10000
-    params = (TYPE, NUMBER_OF_ELEMENTS, CITY, ROOM_AREA_MIN, ROOM_AREA_MAX, MIN_PRICE, MAX_PRICE)
-    parse_move(params)
+# if __name__ == "__main__":
+#     TYPE = 0
+#     NUMBER_OF_ELEMENTS = 10
+#     CITY = 'Moscow'
+#     ROOM_AREA_MIN = 10
+#     ROOM_AREA_MAX = 100
+#     MIN_PRICE = 1000
+#     MAX_PRICE = 10000
+#     params = (TYPE, NUMBER_OF_ELEMENTS, CITY, ROOM_AREA_MIN, ROOM_AREA_MAX, MIN_PRICE, MAX_PRICE)
+#     parse_move(params)

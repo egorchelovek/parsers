@@ -27,8 +27,7 @@ from typing import Optional
 from xlsxwriter.worksheet import (
     Worksheet, cell_number_tuple, cell_string_tuple)
 import xlsxwriter
-# from django.conf import settings
-import settings
+from django.conf import settings
 # import settings
 def prepare_workbook(filename):
     workbook = xlsxwriter.Workbook(filename)

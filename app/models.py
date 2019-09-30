@@ -21,10 +21,10 @@ class Worker(models.Model):
 
     objects_types = MultiSelectField(choices = tuple(settings.OBJECTS_TYPES.items()))
 
-    city = models.CharField(max_length=200)
+    city = models.CharField(max_length=200, choices=tuple(settings.CITIES.items()))
 
-    room_area_min = models.FloatField(validators=MinValueValidator(0.0)])
-    room_area_max = models.FloatField(validators=MinValueValidator(0.0)])
+    room_area_min = models.FloatField(validators=[MinValueValidator(0.0)])
+    room_area_max = models.FloatField(validators=[MinValueValidator(0.0)])
 
     min_price_rent = models.FloatField(validators=[MinValueValidator(0.0)]) # little bit tricky
     max_price_rent = models.FloatField(validators=[MinValueValidator(0.0)])
@@ -38,10 +38,14 @@ class Worker(models.Model):
 
     def activate(self):
 
+        if self.state_active == True:
+            return
+
         self.state_active = True
         self.save()
 
         parse_and_report(
+        self.id,
         self.mailing_list,
         list(self.source_sites),
         list(self.objects_types),
@@ -52,9 +56,13 @@ class Worker(models.Model):
         self.min_price_rent,
         self.max_price_rent,
         self.min_price_sell,
-        self.max_price_sell)
+        self.max_price_sell,
+        repeat = self.updating_period)
 
     def stop(self):
+
+        if self.state_active == False:
+            return
 
         self.state_active = False
         self.save()

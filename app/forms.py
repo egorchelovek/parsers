@@ -7,7 +7,6 @@ class WorkerForm(forms.ModelForm):
         model = Worker
         fields = (
         'name',
-        'state_active',
         'mailing_list',
         'source_sites',
         'objects_amount',

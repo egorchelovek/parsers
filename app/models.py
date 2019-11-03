@@ -3,7 +3,8 @@ from django.conf import settings
 from django.core.validators import MinValueValidator
 from django.utils import timezone
 from multiselectfield import MultiSelectField
-from app.task import parse_and_report
+from django_celery_beat.models import PeriodicTask, IntervalSchedule
+import json
 
 class Worker(models.Model):
 
@@ -36,36 +37,7 @@ class Worker(models.Model):
 
     updating_period = models.IntegerField(choices=tuple(settings.UPDATING_PERIODS.items()))
 
-    def activate(self):
-
-        if self.state_active == True:
-            return
-
-        self.state_active = True
-        self.save()
-
-        parse_and_report(
-        self.id,
-        self.mailing_list,
-        list(self.source_sites),
-        list(self.objects_types),
-        self.objects_amount,
-        self.city,
-        self.room_area_min,
-        self.room_area_max,
-        self.min_price_rent,
-        self.max_price_rent,
-        self.min_price_sell,
-        self.max_price_sell,
-        repeat = self.updating_period)
-
-    def stop(self):
-
-        if self.state_active == False:
-            return
-
-        self.state_active = False
-        self.save()
+    task_id = models.IntegerField(default = 0)
 
         # TODO stop task feature
 

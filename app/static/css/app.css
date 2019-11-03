@@ -38,6 +38,6 @@ h1, h2, h3, h4 {
 }
 
 table.simple td {
-  padding: 2px;
+  padding: 12px;
   align-content: flex-start;
 }

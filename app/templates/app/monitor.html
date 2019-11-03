@@ -1,0 +1,91 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<h1> Список сотрудников </h1>
+<table class="simple">
+  <tbody>
+    <tr style="background-color:#5cb85c; color:white;">
+      <td> ФИО </td>
+      <td> Состояние </td>
+      <td> Управление </td>
+      <td> </td>
+      <td> Список рассылки </td>
+      <!-- <td> Источники </td>
+      <td> Число объектов</td>
+      <td> Тип операции </td>
+      <td> Цена аренды/покупки </td>
+      <td> Время начала работы </td>
+      <td> Период обновления </td> -->
+      <td> </td>
+    </tr>
+  {% for worker in workers %}
+  <tr>
+    <td> {{worker.name}} </td>
+    <td>
+      <div id="progress-wrapper-{{worker.pk}}">
+        <div id="progress-bar-{{worker.pk}}" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">&nbsp;</div>
+        <div id="progress-bar-message-{{worker.pk}}">Ожидает</div>
+      </div>
+    </td>
+    <td> <button id="worker-activate-trigger-{{worker.pk}}" class="btn btn-default" >Активизировать</button> </td>
+    <td> <a id="worker-stop-trigger-{{worker.pk}}" class="btn btn-default" href="{% url 'worker_stop' pk=worker.pk %}">Остановить</a> </td>
+    <td> {{worker.mailing_list}} </td>
+    <!-- <td> {{worker.source_sites}} </td>
+    <td> {{worker.objects_amount}} </td>
+    <td> {{worker.objects_types}} </td>
+    <td> {{worker.min_price_rent}}-{{worker.max_price_rent}}&#x20bd;/<br>{{worker.min_price_sell}}-{{worker.max_price_sell}}&#x20bd; </td>
+    <td> {{worker.starting_time}} </td>
+    <td> {{worker.updating_period}} сек </td> -->
+    <td> <a class="btn btn-default" href="{% url 'worker_edit' pk=worker.pk %}"><span class="glyphicon glyphicon-pencil"></span></a> </td>
+  </tr>
+
+
+  <script type="text/javascript">
+    function taskUpdate(taskUpdateURL, bar, barMessage){
+      fetch(taskUpdateURL).then(function(response) {
+           response.json().then(function(data) {
+             bar.style.width = data.progress + "%";
+             barMessage.innerHTML = data.state;
+
+             if(data.progress < 100 && data.state != "Error"){
+              setTimeout(taskUpdate, 500, taskUpdateURL, bar, barMessage);
+            } else {
+              bar.style.width =  "0%";
+              barMessage.innerHTML = "Done";
+            }
+           });
+      });
+    }
+
+    var triggerActivate = document.getElementById('worker-activate-trigger-{{worker.pk}}');
+    triggerActivate.addEventListener('click', function(e) {
+      var workerActivateURL = '{% url "worker_activate" pk=worker.pk %}';
+      var taskUpdateURL = '{% url "task_update" worker.task_id %}';
+      var bar = document.getElementById("progress-bar-{{worker.pk}}");
+      var barMessage = document.getElementById("progress-bar-message-{{worker.pk}}");
+      fetch(workerActivateURL).then(taskUpdate(taskUpdateURL, bar, barMessage));
+    });
+  </script>
+  {% endfor %}
+
+  <tr style="border-top: 1px solid #000; border-color: orange;">
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> Добавить сотрудника </td>
+    <!-- <td> Источники </td>
+    <td> Число объектов</td>
+    <td> Тип операции </td>
+    <td> Цена аренды/покупки </td>
+    <td> Время начала работы </td>
+    <td> Период обновления </td> -->
+    <td> <a class="btn btn-link"  href="{% url 'worker_edit' %}"> <span class="glyphicon glyphicon-plus" style="color:#5cb85c;"></span> </a> </td>
+  </tr>
+  </tbody>
+</table>
+<br>
+
+
+
+{% endblock %}

@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'multiselectfield',
-    'background_task',
+    'django_celery_beat',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -78,15 +79,16 @@ WSGI_APPLICATION = 'parsers.wsgi.application'
 
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'parsers',
         'USER': 'egor',
         'PASSWORD':'qwerty',
         'HOST':'localhost',
-        'PORT':'',
+        'PORT':'5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -128,6 +130,22 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = '/'
+
+BACKEND_URL = 'db+postgresql://'
+BACKEND_URL += DATABASES['default']['USER']+ ':'
+BACKEND_URL += DATABASES['default']['PASSWORD'] + '@'
+BACKEND_URL += DATABASES['default']['HOST'] + ':'
+BACKEND_URL += DATABASES['default']['PORT'] + '/'
+BACKEND_URL += DATABASES['default']['NAME']
+
+CELERY_BROKER_URL = 'pyamqp://'
+CELERY_RESULT_BACKEND = BACKEND_URL
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_IGNORE_RESULT = False
+# CELERY_TIMEZONE = TIME_ZONE
+# CELERY_TRACK_STARTED = True
 
 # E-mail preferences
 # via SMTP
@@ -200,7 +218,8 @@ OBJECTS_AMOUNTS = {
 }
 
 UPDATING_PERIODS = {
-    5 : '5 секунд',
+    5 : '5 сек',
+    60 : '1 минута',
     900 : '15 минут',
     3600 : '1 час',
     10800 : '3 часа',
